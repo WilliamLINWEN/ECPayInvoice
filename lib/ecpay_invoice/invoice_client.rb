@@ -22,7 +22,7 @@ module ECpayInvoice
         include ECpayErrorDefinition
 
         def initialize(merchant_id: nil, hash_key: nil, hash_iv: nil, mode: 'Test')
-            @helper = APIHelper.new(mode, merchant_id, hash_key, hash_iv)
+            @helper = ECpayInvoice::APIHelper.new(mode, merchant_id, hash_key, hash_iv)
         end
 
         def ecpay_invoice_issue(param)
