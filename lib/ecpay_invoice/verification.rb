@@ -214,7 +214,11 @@ module ECpayInvoice
                     raise ECpayInvalidParam, %Q{Parameter value cannot be nil}
                 end
                 #1. 比對欄位是否缺乏
-                param_diff = @inv_basic_param - params.keys()
+                options_items = ["CustomerID", "CustomerIdentifier", "CustomerName", "CustomerAddr",
+                                 "CustomerPhone", "CustomerEmail", "ClearanceMark", "LoveCode",
+                                 "CarruerType", "CarruerNum", "InvoiceRemark", "ItemTaxType",
+                                 "ItemRemark", "vat"]
+                param_diff = @inv_basic_param - options_items - params.keys()
                 unless param_diff == []
                     raise ECpayInvalidParam, %Q{Lack required invoice param #{param_diff}}
                 end
