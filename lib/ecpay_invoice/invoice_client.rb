@@ -21,8 +21,8 @@ module ECpayInvoice
 	class InvoiceClientECPay
         include ECpayErrorDefinition
 
-        def initialize
-            @helper = APIHelper.new
+        def initialize(merchant_id: nil, hash_key: nil, hash_iv: nil, mode: 'Test')
+            @helper = APIHelper.new(mode, merchant_id, hash_key, hash_iv)
         end
 
         def ecpay_invoice_issue(param)
